@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Hack Prank</title>
+</head>
+<body>
+    <script>
+        // Show alert for 0.5 seconds
+        setTimeout(() => {
+            alert("Your phone is hacked!");
+        }, 100); // Small delay to ensure alert fires
+
+        // Trigger vibration after alert (0.5s delay + 0.5s alert duration = 1s total)
+        setTimeout(() => {
+            if ("vibrate" in navigator) {
+                navigator.vibrate(200); // Vibrate for 200ms
+            } else {
+                console.log("Vibration not supported on this device.");
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
