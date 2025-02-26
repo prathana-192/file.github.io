@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacked Alert</title>
+    <style>
+        /* CSS for the alert */
+        .alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ff4444;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: none; /* Hidden by default */
+            z-index: 1000;
+        }
+
+        /* Dark background overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Overlay and alert elements -->
+    <div class="overlay" id="overlay"></div>
+    <div class="alert" id="alertBox">Your phone is hacked!</div>
+
+    <script>
+        // JavaScript to control the alert and vibration
+        window.onload = function() {
+            const alertBox = document.getElementById('alertBox');
+            const overlay = document.getElementById('overlay');
+
+            // Show the alert and overlay
+            alertBox.style.display = 'block';
+            overlay.style.display = 'block';
+
+            // Hide the alert after 0.5 seconds and trigger vibration
+            setTimeout(() => {
+                alertBox.style.display = 'none';
+                overlay.style.display = 'none';
+
+                // Trigger vibration (500ms) if supported
+                if ('vibrate' in navigator) {
+                    navigator.vibrate(500); // Vibrate for 500ms
+                } else {
+                    console.log("Vibration not supported on this device.");
+                }
+            }, 500); // 500ms = 0.5 seconds
+        };
+    </script>
+</body>
+</html>
